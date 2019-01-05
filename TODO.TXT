@@ -1,0 +1,7 @@
+TODO
+ext2api, correct bug in mounter < 17.03,
+create  < 24.03,
+directory control < 31.03
+==========================
+removable media support < 15.04
+TESTING < 1.05

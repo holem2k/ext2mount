@@ -1,0 +1,17 @@
+[BUGS]
+1) FAST_IO_DISPATCH structure is not initialized. [BSOD]
+2) Vpb bug in remount path. [BSOD]
+3) SL_VERIFY_REQUIRED is not cleared in remount path.
+4) User buffer is not locked when user unduced error occures and cached i/o flag set.
+5) Ext2GetCachedBlock now returns real status, not STATUS_UNSUCCESSFUL.
+6) big files support added.
+7) mounter bugs fixed, sparse file support added.
+
+[PREBUGS]
+1) Filemon shows weird names in IRP_MJ_CLOSE routine as
+   I:\Program Files\Far\readme.txt\dir2\myfile.dat
+   (real file name is 'I:\dir1\dir2\myfile.dat': 'dir2\myfile.dat' was opened
+      relative to 'dir1').
+   Possible cause: RelatedFileName is invalid in IRP_MJ_CLOSE routine,
+   so it's filemon's bug.
+

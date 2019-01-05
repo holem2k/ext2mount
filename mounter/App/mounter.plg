@@ -1,0 +1,147 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mounter - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mounter.res" /d "NDEBUG" "E:\ext2fsd\mounter\App\mounter.rc"" 
+Creating temporary file "C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSPC.tmp" with contents
+[
+/nologo /ML /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_UNICODE" /Fp"Release/mounter.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\ext2fsd\mounter\App\_useatlwin.cpp"
+"E:\ext2fsd\mounter\App\helpers.cpp"
+"E:\ext2fsd\mounter\App\LetterDlg.cpp"
+"E:\ext2fsd\mounter\App\MountDlg.cpp"
+"E:\ext2fsd\mounter\App\mounter.cpp"
+"E:\ext2fsd\mounter\App\MountGUI.cpp"
+"E:\ext2fsd\mounter\App\MountMan.cpp"
+"E:\ext2fsd\mounter\App\Options.cpp"
+"E:\ext2fsd\mounter\App\PartitionList.cpp"
+"E:\ext2fsd\mounter\App\StatusBar.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSPC.tmp" 
+Creating temporary file "C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSPD.tmp" with contents
+[
+/nologo /ML /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_UNICODE" /Fp"Release/mounter.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\ext2fsd\mounter\App\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSPD.tmp" 
+Creating temporary file "C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSPE.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib comctl32.lib ..\parthlp\release\parthlp.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/mounter.pdb" /machine:I386 /out:"Release/mounter.exe" /VERBOSE:LIB 
+.\Release\_useatlwin.obj
+.\Release\helpers.obj
+.\Release\LetterDlg.obj
+.\Release\MountDlg.obj
+.\Release\mounter.obj
+.\Release\MountGUI.obj
+.\Release\MountMan.obj
+.\Release\Options.obj
+.\Release\PartitionList.obj
+.\Release\StatusBar.obj
+.\Release\StdAfx.obj
+.\Release\mounter.res
+]
+Creating command line "link.exe @C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSPE.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+_useatlwin.cpp
+Generating Code...
+Compiling...
+helpers.cpp
+Generating Code...
+Compiling...
+LetterDlg.cpp
+Generating Code...
+Compiling...
+MountDlg.cpp
+Generating Code...
+Compiling...
+mounter.cpp
+Generating Code...
+Compiling...
+MountGUI.cpp
+Generating Code...
+Compiling...
+MountMan.cpp
+Generating Code...
+Compiling...
+Options.cpp
+Generating Code...
+Compiling...
+PartitionList.cpp
+Generating Code...
+Compiling...
+StatusBar.cpp
+Generating Code...
+Linking...
+
+Searching Libraries
+    Searching E:\VC\LIB\kernel32.lib:
+    Searching E:\VC\LIB\user32.lib:
+    Searching E:\VC\LIB\gdi32.lib:
+    Searching E:\VC\LIB\winspool.lib:
+    Searching E:\VC\LIB\comdlg32.lib:
+    Searching E:\VC\LIB\advapi32.lib:
+    Searching E:\VC\LIB\shell32.lib:
+    Searching E:\VC\LIB\ole32.lib:
+    Searching E:\VC\LIB\oleaut32.lib:
+    Searching E:\VC\LIB\uuid.lib:
+    Searching E:\VC\LIB\odbc32.lib:
+    Searching E:\VC\LIB\odbccp32.lib:
+    Searching E:\VC\LIB\comctl32.lib:
+    Searching ..\parthlp\release\parthlp.lib:
+    Searching E:\VC\LIB\olepro32.lib:
+    Searching E:\VC\LIB\LIBC.lib:
+    Searching E:\VC\LIB\OLDNAMES.lib:
+    Searching E:\VC\LIB\libcp.lib:
+    Searching e:\ddk\libchk\i386\ntdll.lib:
+    Searching E:\VC\LIB\kernel32.lib:
+    Searching E:\VC\LIB\user32.lib:
+    Searching E:\VC\LIB\gdi32.lib:
+    Searching E:\VC\LIB\winspool.lib:
+    Searching E:\VC\LIB\comdlg32.lib:
+    Searching E:\VC\LIB\advapi32.lib:
+    Searching E:\VC\LIB\shell32.lib:
+    Searching E:\VC\LIB\ole32.lib:
+    Searching E:\VC\LIB\oleaut32.lib:
+    Searching E:\VC\LIB\uuid.lib:
+    Searching E:\VC\LIB\odbc32.lib:
+    Searching E:\VC\LIB\odbccp32.lib:
+    Searching E:\VC\LIB\comctl32.lib:
+    Searching ..\parthlp\release\parthlp.lib:
+    Searching E:\VC\LIB\olepro32.lib:
+    Searching E:\VC\LIB\LIBC.lib:
+    Searching E:\VC\LIB\OLDNAMES.lib:
+    Searching E:\VC\LIB\libcp.lib:
+    Searching e:\ddk\libchk\i386\ntdll.lib:
+    Searching E:\VC\LIB\kernel32.lib:
+    Searching E:\VC\LIB\user32.lib:
+    Searching E:\VC\LIB\gdi32.lib:
+    Searching E:\VC\LIB\winspool.lib:
+    Searching E:\VC\LIB\comdlg32.lib:
+    Searching E:\VC\LIB\advapi32.lib:
+    Searching E:\VC\LIB\shell32.lib:
+    Searching E:\VC\LIB\ole32.lib:
+    Searching E:\VC\LIB\oleaut32.lib:
+    Searching E:\VC\LIB\uuid.lib:
+    Searching E:\VC\LIB\odbc32.lib:
+    Searching E:\VC\LIB\odbccp32.lib:
+    Searching E:\VC\LIB\comctl32.lib:
+    Searching ..\parthlp\release\parthlp.lib:
+    Searching E:\VC\LIB\olepro32.lib:
+
+Done Searching Libraries
+
+
+
+<h3>Results</h3>
+mounter.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

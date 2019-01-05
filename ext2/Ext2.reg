@@ -1,0 +1,10 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ext2r]
+"ErrorControl"=dword:00000001
+"Group"="File system"
+"Start"=dword:00000004
+"Type"=dword:00000002
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ext2r\Parameters]
+"CodePage"=dword:00000001
+"ResolveLinks"=dword:00000000

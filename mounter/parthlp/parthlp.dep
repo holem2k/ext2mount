@@ -1,0 +1,17 @@
+# Microsoft Developer Studio Generated Dependency File, included by parthlp.mak
+
+.\parthlp.cpp : \
+	".\parthlp.h"\
+	
+
+.\StdAfx.cpp : \
+	"..\..\..\ddk\inc\bugcodes.h"\
+	"..\..\..\ddk\inc\ddk\ntddk.h"\
+	"..\..\..\ddk\inc\ntdef.h"\
+	"..\..\..\ddk\inc\ntiologc.h"\
+	"..\..\..\ddk\inc\ntstatus.h"\
+	"..\..\..\vc\include\basetsd.h"\
+	"..\..\..\vc\include\guiddef.h"\
+	".\StdAfx.h"\
+	".\undocnt\undocnt.h"\
+	

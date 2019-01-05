@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: parthlp - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSP8.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "_UNICODE" /Fp"Release/parthlp.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\ext2fsd\mounter\parthlp\parthlp.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSP8.tmp" 
+Creating temporary file "C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSP9.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "_UNICODE" /Fp"Release/parthlp.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\ext2fsd\mounter\parthlp\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\HOLEM~1.HOL\LOCALS~1\Temp\RSP9.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\parthlp.lib"  .\Release\parthlp.obj .\Release\StdAfx.obj "
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Compiling...
+parthlp.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+parthlp.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

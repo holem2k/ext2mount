@@ -1,0 +1,186 @@
+/*
+	Module name:  mount.c
+	Abstract: create symbolic links to ext2 partitions
+*/
+
+#include <ntddk.h>
+#include "mount.h"
+#include "ioctlcode.h"
+
+#ifdef ALLOC_PRAGMA
+#pragma alloc_text (INIT, DriverEntry)
+#pragma alloc_text (PAGE, MountDeviceIoctl)
+#pragma alloc_text (PAGE, MountClose)
+#pragma alloc_text (PAGE, MountCreate)
+#pragma alloc_text (PAGE, MountUnload)
+#endif
+
+NTSTATUS
+DriverEntry(
+			IN PDRIVER_OBJECT  DriverObject,
+			IN PUNICODE_STRING RegistryPath
+			)
+{
+	NTSTATUS status = STATUS_SUCCESS;
+	PDEVICE_OBJECT pDeviceObject = NULL;
+	UNICODE_STRING uszLink, uszDevName;
+	BOOLEAN bLink = FALSE;
+	
+	DbgPrint("[mount.sys] -> DriverEntry()\n");
+	
+	DriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL] = MountDeviceIoctl;
+	DriverObject->MajorFunction[IRP_MJ_CREATE] = MountCreate;
+	DriverObject->MajorFunction[IRP_MJ_CLOSE] = MountClose;
+	DriverObject->DriverUnload = MountUnload;
+	
+	__try
+	{
+		// create device
+		RtlInitUnicodeString(&uszDevName, MountDevName);
+		status = IoCreateDevice(DriverObject,
+			0,
+			&uszDevName,
+			FILE_DEVICE_UNKNOWN,
+			0,
+			FALSE,
+			&pDeviceObject);
+		
+		if (!NT_SUCCESS(status))
+		{
+			DbgPrint("[mount.sys] - IoCreateDevice() failed.\n");
+			__leave;
+		}
+		
+		// create symbolic link to device
+		RtlInitUnicodeString(&uszLink, MountLinkName);
+		
+		status = IoCreateSymbolicLink(&uszLink, &uszDevName);
+		if (!NT_SUCCESS(status))
+		{
+			DbgPrint("[mount.sys] - IoCreateSymbolicLink() failed.\n");
+			__leave;
+		}
+		else 
+			bLink = TRUE;
+	}
+	__finally
+	{
+		if (!NT_SUCCESS(status))
+		{
+			// delete symbolic link
+			if (bLink)
+				IoDeleteSymbolicLink(&uszLink);
+			
+			// delete device;
+			if (pDeviceObject != NULL)
+				IoDeleteDevice(pDeviceObject);
+		}
+	}
+	return status;
+}
+
+
+NTSTATUS
+MountDeviceIoctl(
+				 IN  PDEVICE_OBJECT  DeviceObject,
+				 IN  PIRP            Irp
+				 )
+{
+	NTSTATUS status = STATUS_SUCCESS;
+	PIO_STACK_LOCATION pStack;
+	ULONG cbDataIn;
+	ULONG uParam, uDrive, uPartition, uLetter;
+	UNICODE_STRING uszLink, uszDevice;
+
+	PAGED_CODE();
+	
+	DbgPrint("[mount.sys] -> MountDeviceIoctl()\n");
+	
+	pStack = IoGetCurrentIrpStackLocation(Irp);
+
+	cbDataIn = pStack->Parameters.DeviceIoControl.InputBufferLength;
+
+	switch (pStack->Parameters.DeviceIoControl.IoControlCode)
+	{
+	case IOCTL_CREATE_SYMBOLIC_LINK:
+	case IOCTL_DELETE_SYMBOLIC_LINK:
+		if (cbDataIn != sizeof(ULONG))
+			status = STATUS_INVALID_BUFFER_SIZE;
+		else
+		{
+			uParam = *(ULONG *)Irp->AssociatedIrp.SystemBuffer;
+			uDrive = LINK_DRIVE(uParam);
+			uPartition = LINK_PARTITION(uParam);
+			uLetter = LINK_LETTER(uParam);
+
+			// TO DO
+			// ...
+
+		}
+		break;
+
+	default:
+		status = STATUS_INVALID_DEVICE_REQUEST;
+	}
+	
+	Irp->IoStatus.Status = status;
+	Irp->IoStatus.Information = 0;
+	IoCompleteRequest(Irp, IO_NO_INCREMENT);
+	return status;
+}
+
+NTSTATUS
+MountCreate(
+			IN  PDEVICE_OBJECT  DeviceObject,
+			IN  PIRP            Irp
+			)
+{
+	NTSTATUS status = STATUS_SUCCESS;
+	PAGED_CODE();
+	DbgPrint("[mount.sys] -> MountCreate()\n");
+	
+	// simply complete request
+	Irp->IoStatus.Status = status;
+	Irp->IoStatus.Information = 0;
+	IoCompleteRequest(Irp, IO_NO_INCREMENT);
+	return status;
+}
+
+NTSTATUS
+MountClose(
+		   IN  PDEVICE_OBJECT  DeviceObject,
+		   IN  PIRP            Irp
+		   )
+{
+	NTSTATUS status = STATUS_SUCCESS;
+	PAGED_CODE();
+	DbgPrint("[mount.sys] -> MountClose()\n");
+	
+	// simply complete request
+	Irp->IoStatus.Status = status;
+	Irp->IoStatus.Information = 0;
+	IoCompleteRequest(Irp, IO_NO_INCREMENT);
+	return status;
+}
+
+
+VOID
+MountUnload(
+			IN PDRIVER_OBJECT DriverObject
+			)
+{
+	UNICODE_STRING link;
+	PAGED_CODE();
+	DbgPrint("[mount.sys] -> MountUnload()\n");
+	
+	// delete symbolic link
+	RtlInitUnicodeString(&link, MountLinkName);
+	IoDeleteSymbolicLink(&link);
+	
+	// delete device
+	IoDeleteDevice(DriverObject->DeviceObject);
+}
+
+
+
+//	DbgPrint("Process id = %u\n", PsGetCurrentProcessId());

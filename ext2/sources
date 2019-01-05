@@ -1,0 +1,34 @@
+TARGETNAME=ext2r
+TARGETPATH=build
+TARGETTYPE=DRIVER
+I386_WARNING_LEVEL=/W4
+#CHECKED_ALT_DIR=1
+TARGETLIBS=$(SDK_LIB_PATH)\libc.lib
+
+SOURCES=ext2.cpp \
+	cachesup.cpp \
+	cleanup.cpp \
+	close.cpp \
+	cmcallbacks.cpp \
+	create.cpp \
+	devcontrol.cpp \
+	dirctrl.cpp \
+	disk.cpp \
+	dispatch.cpp \
+	except.cpp \
+	ext2.cpp \
+	ext2alg.cpp \
+	ext2api.cpp \
+ 	fastio.cpp \
+	fileinfo.cpp \
+	fscontrol.cpp \
+	helpers.cpp \
+	options.cpp \
+	read.cpp \
+	struct.cpp \
+	versup.cpp \
+	volumeinfo.cpp
+
+
+	
+	

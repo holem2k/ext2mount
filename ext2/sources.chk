@@ -1,0 +1,36 @@
+TARGETNAME=ext2
+TARGETPATH=build
+TARGETTYPE=DRIVER
+
+# for SoftICE :
+NTDEBUG=ntsd
+NTDEBUGTYPE=windbg
+
+BROWSER_INFO=TRUE
+I386_WARNING_LEVEL=/W4
+#CHECKED_ALT_DIR=1
+
+SOURCES=ext2.cpp \
+	cleanup.cpp \
+	close.cpp \
+	cmcallbacks.cpp \
+	create.cpp \
+	dirctrl.cpp \
+	disk.cpp \
+	dispatch.cpp \
+	except.cpp \
+	ext2.cpp \
+	ext2alg.cpp \
+	ext2api.cpp \
+ 	fastio.cpp \
+	fileinfo.cpp \
+	fscontrol.cpp \
+	helpers.cpp \
+	read.cpp \
+	struct.cpp \
+	versup.cpp \
+	volumeinfo.cpp
+
+
+	
+	
